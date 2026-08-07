@@ -65,24 +65,84 @@ Display all filtered images using a grid layout for comparison.
 
 ##  Developed By
 
-- **Name:** ____________________________  
-- **Register No:** ______________________  
-
+- **Name:** THARUN R
+- **Register No:** 212224230289
 ---
 
+1. Smoothing Filters
+i) Using Averaging Filter
+```
+import cv2
+import matplotlib.pyplot as plt
+import numpy as np
+image1=cv2.imread("spider.png")
+image2=cv2.cvtColor(image1,cv2.COLOR_BGR2RGB)
+kernel=np.ones((11,11),np.float32)/169
+image3=cv2.filter2D(image2,-1,kernel)
+plt.figure(figsize=(9,9))
+plt.subplot(1,2,1)
+plt.imshow(image2)
+plt.title("Original Image")
+plt.axis("off")
+plt.subplot(1,2,2)
+plt.imshow(image3)
+plt.title("Average Filter Image")
+plt.axis("off")
+plt.show()
+```
+ii) Using Weighted Averaging Filter
+```
+kernel1=np.array([[1,2,1],[2,4,2],[1,2,1]])/16
+image3=cv2.filter2D(image2,-1,kernel1)
+plt.imshow(image3)
+plt.title("Weighted Average Filter Image")
+plt.axis("off")
+plt.show()
+```
+iii) Using Gaussian Filter
+```
+gaussian_blur=cv2.GaussianBlur(image2,(33,33),0,0)
+plt.imshow(gaussian_blur)
+plt.title("Gaussian Blur")
+plt.axis("off")
+plt.show()
+```
+
+2. Sharpening Filters
+i) Using Laplacian Linear Kernal
+```
+kernel2=np.array([[-1,-1,-1],[2,-2,1],[2,1,-1]])
+image3=cv2.filter2D(image2,-1,kernel2)
+plt.imshow(image3)
+plt.title("Laplacian Kernel")
+plt.axis("off")
+plt.show()
+```
+ii) Using Laplacian Operator
+```
+laplacian=cv2.Laplacian(image2,cv2.CV_64F)
+plt.imshow(laplacian)
+plt.title("Laplacian Operator")
+plt.axis("off")
+plt.show()
+```
 ##  Output
 
 ### Smoothing Filters
 
-- Averaging filter produces blurred image  
-- Weighted averaging provides smoother result with less distortion  
-- Gaussian filter preserves edges better while reducing noise  
-- Median filter removes salt-and-pepper noise effectively  
+<img width="827" height="312" alt="Screenshot 2026-08-07 113533" src="https://github.com/user-attachments/assets/3983637e-cf05-4139-b1c2-ef1418d5ee32" />
+<img width="743" height="508" alt="Screenshot 2026-08-07 113553" src="https://github.com/user-attachments/assets/697ba5de-e1a4-4a06-a439-27b98b072efd" />
+<img width="770" height="497" alt="Screenshot 2026-08-07 113558" src="https://github.com/user-attachments/assets/629ce9c6-b48e-4b34-bd4b-9f7a9eec2782" />
+
+
+
+
 
 ###  Sharpening Filters
+<img width="675" height="487" alt="Screenshot 2026-08-07 113614" src="https://github.com/user-attachments/assets/ca5f8684-f314-4492-933e-c0302cd8a611" />
+<img width="762" height="477" alt="Screenshot 2026-08-07 113606" src="https://github.com/user-attachments/assets/db87c877-98b5-4c7d-99ac-71d309c41c6a" />
 
-- Laplacian kernel enhances edges and fine details  
-- Laplacian operator detects edges clearly in grayscale  
+
 
 ---
 
